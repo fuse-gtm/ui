@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brand-assets",
+  "type": "registry:style",
+  "title": "Fuse brand assets",
+  "description": "Fuse canonical brand asset bundle. Publishes the cleaned vector logo (fuse-logo.svg \u2014 pixel-terrace icon + Funnel Display wordmark, generator-artifact font-embed stripped, fill=currentColor + font-family=var(--font-display) for theming per Hard Rule 14). Binary assets (favicon.ico + fuse-icon-color/black/white.png + fuse-social-cover.jpg) ship in the registry repo at public/brand-assets/ \u2014 fetch via raw GitHub URLs: https://raw.githubusercontent.com/fuse-gtm/ui/main/public/brand-assets/{favicon.ico,fuse-icon-color.png,fuse-icon-black.png,fuse-icon-white.png,fuse-social-cover.jpg}. Source: /Users/dhruvraina/Downloads/fuse_logo_package (canonical bundle 2026-04-30, staged at /tmp/fuse-brand-assets/). Consume command: pnpm dlx shadcn@latest add @fuse/brand-assets \u2014 copies the cleaned SVG to public/fuse-logo.svg; binaries are downloaded manually per the URLs above (shadcn registry items inline file content as JSON strings; binary assets don't fit that pattern, so they live as static files in the registry repo).",
+  "registryDependencies": [
+    "https://fuse-registry.vercel.app/r/wordmark.json"
+  ],
+  "files": [
+    {
+      "path": "registry/fuse/logo.svg",
+      "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"86.484375\" height=\"30\" viewBox=\"0 -24 86.484375 30\">\n  <g transform=\"translate(0, -17.378451824188232)\">\n    <g transform=\"translate(0, -3.1000000000000014)\">\n      <svg viewBox=\"0 0 186 186\" width=\"24\" height=\"24\">\n        <path d=\"M37.1332 148.533V185.666H0V148.533H37.1332ZM185.666 37.1332V185.666H148.533V37.1332H185.666ZM74.2664 111.4H111.4V185.666H74.2664V111.4ZM74.2664 74.2664V111.4H0V74.2664H74.2664ZM148.533 0V37.1332H0V0H148.533Z\" fill=\"currentColor\"/>\n      </svg>\n    </g>\n  </g>\n  <g transform=\"translate(36, 0)\">\n    <text x=\"0\" y=\"0\" font-family=\"var(--font-display), system-ui, sans-serif\" font-size=\"24\" font-weight=\"700\" fill=\"currentColor\" letter-spacing=\"0\">fuse</text>\n  </g>\n</svg>\n",
+      "type": "registry:file",
+      "target": "public/logo.svg"
+    }
+  ]
+}

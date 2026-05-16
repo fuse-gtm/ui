@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: "shadcn/ui",
-  url: "https://ui.shadcn.com",
-  ogImage: "https://ui.shadcn.com/og.jpg",
+  name: "Fuse component registry",
+  url: "https://fuse-registry.vercel.app",
+  ogImage: "https://fuse-registry.vercel.app/og.jpg",
   description:
-    "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+    "Fuse component registry — opinionated brand-canon components for the Fuse Partner Discovery web app, layered on shadcn/ui primitives + 7 external registries. Mirrors the full shadcn directory site so you can browse every component side-by-side. Open Source. Open Code.",
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn-ui/ui",
+    twitter: "https://twitter.com/fusegtm",
+    github: "https://github.com/fuse-gtm/ui",
   },
   navItems: [
     {
