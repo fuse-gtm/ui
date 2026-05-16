@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="86.484375" height="30" viewBox="0 -24 86.484375 30">
+  <g transform="translate(0, -17.378451824188232)">
+    <g transform="translate(0, -3.1000000000000014)">
+      <svg viewBox="0 0 186 186" width="24" height="24">
+        <path d="M37.1332 148.533V185.666H0V148.533H37.1332ZM185.666 37.1332V185.666H148.533V37.1332H185.666ZM74.2664 111.4H111.4V185.666H74.2664V111.4ZM74.2664 74.2664V111.4H0V74.2664H74.2664ZM148.533 0V37.1332H0V0H148.533Z" fill="currentColor"/>
+      </svg>
+    </g>
+  </g>
+  <g transform="translate(36, 0)">
+    <text x="0" y="0" font-family="var(--font-display), system-ui, sans-serif" font-size="24" font-weight="700" fill="currentColor" letter-spacing="0">fuse</text>
+  </g>
+</svg>

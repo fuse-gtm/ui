@@ -1,0 +1,284 @@
+/*
+ * @fuse/tokens — Fuse Design System tokens (v1, 2026-04-30)
+ *
+ * Single source bridging fuse-web `docs/brand/colors_and_type.css`
+ * ↔ `app/globals.css` ↔ Tailwind. Sourced from Fuse Design System v21
+ * ZIP (`/tmp/fuse-ds-21/colors_and_type.css`) + preview HTML pages
+ * (`spacing-scale.html`, `spacing-radius.html`, `spacing-shadows.html`,
+ * `spacing-border-system.html`, `brand-motion.html`, `type-scale.html`,
+ * `type-families.html`).
+ *
+ * Layering:
+ *   1. Brand scales       (--plum-1..12, --sand-1..12)
+ *   2. Semantic tokens    (--background, --foreground, --primary, …)
+ *   3. Component helpers  (handled in @fuse/<composite> items)
+ *   4. Typography classes (handled in @fuse/<composite> items)
+ *
+ * Component code MUST reference SEMANTIC tokens (--primary, --foreground,
+ * --muted-foreground, --border, --input). Do NOT reach for raw plum/sand
+ * steps outside this file or the consumer's app/globals.css.
+ *
+ * Hard Rule 13: --input is sand-7 (#cfceca), --border is sand-5 (#e2e1de).
+ *               Distinct. WCAG 1.4.11 non-text contrast for form fields.
+ *               Do NOT collapse the two.
+ *
+ * Hard Rule 14: --font-display = "Funnel Display, 700". Wire via next/font/google
+ *               in your app's root layout; this stylesheet only exposes the
+ *               variable name. Wordmark + display-only surfaces consume it.
+ *
+ * No semantic green: Fuse palette is plum + sand only. --success exists for
+ * legacy compat but should not be reached for. Affirmative pills use
+ * --foreground / --muted backgrounds.
+ *
+ * Light mode only — Phase 1. Dark scaffolding intentionally omitted.
+ */
+
+:root {
+  /* ----- 1. Brand scales — Radix plum + Radix sand (light) ------------- */
+
+  /* Plum — accent (copy-exact from @radix-ui/colors/plum.css, light).
+     Hard Rule 11: do not drift these values. */
+  --plum-1: #fefcfe;
+  --plum-2: #fdf7fd;
+  --plum-3: #fbebfb;
+  --plum-4: #f7def8;
+  --plum-5: #f2d1f3;
+  --plum-6: #e9c2ec;
+  --plum-7: #deade3;
+  --plum-8: #cf91d8;
+  --plum-9: #ab4aba; /* "Fuse plum" — accent solid */
+  --plum-10: #a43cb4;
+  --plum-11: #9c2bad;
+  --plum-12: #53195d;
+
+  /* Sand — warm gray neutrals (copy-exact from @radix-ui/colors/sand.css, light) */
+  --sand-1: #fdfdfc;
+  --sand-2: #f9f9f8;
+  --sand-3: #f1f0ef;
+  --sand-4: #e9e8e6;
+  --sand-5: #e2e1de;
+  --sand-6: #dad9d6;
+  --sand-7: #cfceca;
+  --sand-8: #bcbbb5;
+  --sand-9: #8d8d86;
+  --sand-10: #82827c;
+  --sand-11: #63635e;
+  --sand-12: #21201c;
+
+  /* ----- 2. Semantic tokens (shadcn naming) ---------------------------- */
+
+  /* Surfaces */
+  --background: var(--sand-1);
+  --foreground: var(--sand-12);
+  --card: var(--sand-1);
+  --card-foreground: var(--sand-12);
+  --popover: var(--sand-1);
+  --popover-foreground: var(--sand-12);
+
+  /* Primary — plum-9 solid */
+  --primary: var(--plum-9);
+  --primary-foreground: #ffffff;
+
+  /* Secondary / muted / accent — warm grays */
+  --secondary: var(--sand-3);
+  --secondary-foreground: var(--sand-12);
+  --muted: var(--sand-2);
+  --muted-foreground: var(--sand-11);
+  --accent: var(--sand-3);
+  --accent-foreground: var(--sand-12);
+
+  /* Borders + form fields. Hard Rule 13: distinct. */
+  --border: var(--sand-5);  /* static dividers */
+  --input: var(--sand-7);   /* form-field borders (WCAG 1.4.11) */
+  --ring: var(--plum-8);
+
+  /* Status — destructive + (legacy) success + warning + info.
+     No semantic green for affirmative state. */
+  --destructive: #dc3b43;
+  --destructive-foreground: #991b1e;
+  --success: #10b981;
+  --success-foreground: #064e3b;
+  --warning: #eab308;
+  --warning-foreground: #713f12;
+  --info: #8b5cf6;
+  --info-foreground: #4c1d95;
+
+  /* Sidebar */
+  --sidebar: var(--sand-2);
+  --sidebar-foreground: var(--sand-12);
+  --sidebar-primary: var(--plum-9);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--sand-4);
+  --sidebar-accent-foreground: var(--sand-12);
+  --sidebar-border: var(--sand-5);
+  --sidebar-ring: var(--plum-8);
+
+  /* Focus chips — soft accent, distinct from primary */
+  --focus: var(--plum-5);
+  --focus-foreground: var(--plum-12);
+
+  /* IPP tier color aliases — semantic-token layer for cell + panel.
+     Brand invariant: IPP tiers are plum-9 / sand-11 / sand-8 ONLY.
+     No semantic green. Thresholds locked at 75 / 50. */
+  --ipp-tier-1: var(--plum-9);  /* score >= 75 — top tier */
+  --ipp-tier-2: var(--sand-11); /* score >= 50 — mid tier */
+  --ipp-tier-3: var(--sand-8);  /* score <  50 — low tier */
+
+  /* Chart — plum family + neutrals (single-hue) */
+  --chart-1: var(--plum-9);
+  --chart-2: var(--plum-7);
+  --chart-3: var(--plum-5);
+  --chart-4: var(--sand-9);
+  --chart-5: var(--sand-7);
+
+  /* ----- Spacing scale (sourced from preview/spacing-scale.html) ------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* ----- Radius scale (sourced from preview/spacing-radius.html) -------
+     Locked: --radius-lg = 4px (.fds-card baseline). */
+  --radius: 0.25rem;                        /* 4px core */
+  --radius-sm: calc(var(--radius) - 2px);   /* 2px */
+  --radius-md: calc(var(--radius) - 2px);   /* 2px */
+  --radius-lg: var(--radius);               /* 4px */
+  --radius-xl: calc(var(--radius) + 2px);   /* 6px */
+  --radius-pill: 9999px;
+
+  /* ----- Borders (sourced from preview/spacing-border-system.html) -----
+     1px hairline default. No double-borders. */
+  --border-width-thin: 1px;
+  --border-width-thick: 2px;
+  --border-style-solid: solid;
+  --border-style-dashed: dashed;
+
+  /* ----- Shadows — ambient only.
+     Hard Rule: "No shadows except ambient float." */
+  --shadow-none: none;
+  --shadow-card: 0 1px 3px oklch(0 0 0 / 0.05), 0 1px 1px oklch(0 0 0 / 0.03);
+  --shadow-float: 0 8px 24px -6px oklch(0 0 0 / 0.1), 0 2px 8px -2px oklch(0 0 0 / 0.04);
+  --shadow-composer: 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-composer-focus: 0 0 0 1px oklch(0 0 0 / 0.06), 0 2px 8px -2px oklch(0 0 0 / 0.06);
+  --shadow-inset: inset 0 1px 1px oklch(0 0 0 / 0.03);
+
+  /* ----- Motion (sourced from preview/brand-motion.html + globals.css) - */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 280ms;
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1); /* reserved; do NOT use on UI */
+
+  /* ----- Typography ----------------------------------------------------
+     Hard Rule 14: --font-display = Funnel Display 700. Consumers wire
+     this via next/font/google in their root layout; this token only
+     exposes the CSS variable name. */
+  --font-display: "Funnel Display", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* ------------------------------------------------------------------------
+ * 3. Base element styles
+ * ---------------------------------------------------------------------- */
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "ss02", "cv01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  border-color: var(--border);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--foreground);
+  margin: 0;
+}
+
+p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------------
+ * 4. Typography scale (semantic class names; sourced from
+ *    preview/type-scale.html + colors_and_type.css §4)
+ * ---------------------------------------------------------------------- */
+
+.display {
+  font-size: 48px;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+.h1 {
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+.h2 {
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+.h3 {
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+.body-lg { font-size: 15px; line-height: 1.55; }
+.body    { font-size: 14px; line-height: 1.55; }
+.body-sm { font-size: 13px; line-height: 1.5; }
+.label   { font-size: 12px; line-height: 1.4; color: var(--muted-foreground); }
+.caption { font-size: 11px; line-height: 1.3; color: var(--muted-foreground); }
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+}
+
+/* The IPP hero numeral — load-bearing "editorial moment" in the app.
+   Sans-only, maximal scale + tracking, tabular figures. Hard Rule 10:
+   no Gloock, no serif. */
+.ipp-hero-numeral {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+
+/* Reduced-motion guard */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
